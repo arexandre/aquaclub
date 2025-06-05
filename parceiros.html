@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaClub App - Parceiros Mockup</title>
+    <style>
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #90e0ef;
+            --light-color: #caf0f8;
+            --dark-color: #03045e;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --card-bg: #ffffff;
+            --section-bg: #f8f9fa;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--section-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .mockup-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .mockup-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .mockup-title h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-title p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 360px;
+            height: 720px;
+            background-color: var(--card-bg);
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background-color: var(--card-bg);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: var(--section-bg);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--dark-color);
+            font-size: 12px;
+            z-index: 5;
+        }
+
+        .status-bar .time {
+            font-weight: 600;
+        }
+
+        .status-bar .icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .app-header {
+            background-color: var(--primary-color);
+            padding: 60px 20px 20px;
+            color: var(--light-text);
+            text-align: center;
+        }
+
+        .app-header h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .app-header p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .search-bar {
+            background-color: var(--light-text);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            margin-top: 15px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 5px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+        }
+
+        .search-bar i {
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .app-content {
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100% - 160px - 60px); /* Header height + bottom nav height */
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-tab {
+            padding: 8px 15px;
+            background-color: var(--light-color);
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .category-tab.active {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .map-container {
+            height: 180px;
+            background-color: var(--light-color);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .partner-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .partner-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .partner-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .partner-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .partner-info {
+            flex: 1;
+        }
+
+        .partner-info h3 {
+            font-size: 16px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .partner-info p {
+            font-size: 13px;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .partner-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .partner-rating i {
+            color: #ffc107;
+            font-size: 14px;
+        }
+
+        .partner-rating span {
+            font-size: 13px;
+            color: var(--text-color);
+        }
+
+        .partner-details {
+            padding: 0 15px 15px;
+        }
+
+        .partner-benefits {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .partner-benefits h4 {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .partner-benefits p {
+            font-size: 13px;
+            color: var(--text-color);
+        }
+
+        .partner-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .partner-button {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .primary-button {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+        }
+
+        .secondary-button {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border: none;
+        }
+
+        .featured-partners {
+            margin-bottom: 25px;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .featured-partner {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .featured-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 20px;
+            margin: 0 auto 10px;
+        }
+
+        .featured-partner h3 {
+            font-size: 14px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .featured-partner p {
+            font-size: 12px;
+            color: var(--text-color);
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 10px;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+
+        .mockup-description {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .mockup-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-description p {
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .phone-mockup {
+                max-width: 320px;
+                height: 640px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="phone-screen">
+                <div class="status-bar">
+                    <div class="time">10:00</div>
+                    <div class="icons">
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                
+                <div class="app-header">
+                    <h1>Parceiros</h1>
+                    <p>Empresas comprometidas com a sustentabilidade</p>
+                    
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar parceiros...">
+                    </div>
+                </div>
+                
+                <div class="app-content">
+                    <div class="category-tabs">
+                        <div class="category-tab active">Todos</div>
+                        <div class="category-tab">Lojas</div>
+                        <div class="category-tab">Supermercados</div>
+                        <div class="category-tab">Cursos</div>
+                        <div class="category-tab">Serviços</div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    
+                    <div class="featured-partners">
+                        <div class="section-title">
+                            <span>Parceiros em destaque</span>
+                            <a href="#">Ver todos</a>
+                        </div>
+                        
+                        <div class="featured-grid">
+                            <div class="featured-partner">
+                                <div class="featured-logo">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <h3>Eco Construção</h3>
+                                <p>5% de desconto</p>
+                            </div>
+                            
+                            <div class="featured-partner">
+                                <div class="featured-logo">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>EcoLearn</h3>
+                                <p>Cursos gratuitos</p>
+                            </div>
+                            
+                            <div class="featured-partner">
+                                <div class="featured-logo">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </div>
+                                <h3>Supermercado Verde</h3>
+                                <p>5% de desconto</p>
+                            </div>
+                            
+                            <div class="featured-partner">
+                                <div class="featured-logo">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <h3>Água Pura</h3>
+                                <p>10% de desconto</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-cards">
+                        <div class="section-title">
+                            <span>Parceiros próximos</span>
+                        </div>
+                        
+                        <div class="partner-card">
+                            <div class="partner-header">
+                                <div class="partner-logo">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <h3>Eco Construção</h3>
+                                    <p>1,2 km de distância</p>
+                                    <div class="partner-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span>(48)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="partner-details">
+                                <div class="partner-benefits">
+                                    <h4>Benefícios para membros AquaClub:</h4>
+                                    <p>5% de desconto em produtos para economia de água</p>
+                                </div>
+                                
+                                <div class="partner-actions">
+                                    <button class="partner-button primary-button">
+                                        Ver cupons
+                                    </button>
+                                    <button class="partner-button secondary-button">
+                                        <i class="fas fa-directions"></i> Como chegar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="partner-card">
+                            <div class="partner-header">
+                                <div class="partner-logo">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </div>
+                                <div class="partner-info">
+                                    <h3>Supermercado Verde</h3>
+                                    <p>2,5 km de distância</p>
+                                    <div class="partner-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <span>(32)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="partner-details">
+                                <div class="partner-benefits">
+                                    <h4>Benefícios para membros AquaClub:</h4>
+                                    <p>5% de desconto em produtos sustentáveis e orgânicos</p>
+                                </div>
+                                
+                                <div  style="margin-bottom: 50px;" class="partner-actions">
+                                    <button class="partner-button primary-button">
+                                        Ver cupons
+                                    </button>
+                                    <button class="partner-button secondary-button">
+                                        <i class="fas fa-directions"></i> Como chegar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bottom-nav">
+                    <a style="text-decoration: none;" href="dashboard.html">
+                        <div class="nav-item">
+                            <i class="fas fa-home"></i>
+                            <span>Início</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="registro_acoes.html">
+                        <div class="nav-item active">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Registrar</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="beneficios.html">
+                        <div class="nav-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Benefícios</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="perfil.html">
+                        <div class="nav-item">
+                            <i class="fas fa-user"></i>
+                            <span>Perfil</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+</body>
+</html>

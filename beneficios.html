@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaClub App - Benefícios Mockup</title>
+    <style>
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #90e0ef;
+            --light-color: #caf0f8;
+            --dark-color: #03045e;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --card-bg: #ffffff;
+            --section-bg: #f8f9fa;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --bronze-color: #cd7f32;
+            --silver-color: #c0c0c0;
+            --gold-color: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--section-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .mockup-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .mockup-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .mockup-title h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-title p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 360px;
+            height: 720px;
+            background-color: var(--card-bg);
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background-color: var(--card-bg);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: var(--section-bg);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--dark-color);
+            font-size: 12px;
+            z-index: 5;
+        }
+
+        .status-bar .time {
+            font-weight: 600;
+        }
+
+        .status-bar .icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .app-header {
+            background-color: var(--primary-color);
+            padding: 60px 20px 20px;
+            color: var(--light-text);
+            text-align: center;
+        }
+
+        .app-header h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .app-header p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .app-content {
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100% - 120px - 60px); /* Header height + bottom nav height */
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .level-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .level-tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .level-tab.bronze {
+            background-color: rgba(205, 127, 50, 0.2);
+            color: var(--bronze-color);
+            border: 2px solid var(--bronze-color);
+        }
+
+        .level-tab.silver {
+            background-color: rgba(192, 192, 192, 0.2);
+            color: var(--silver-color);
+            border: 2px solid var(--silver-color);
+        }
+
+        .level-tab.gold {
+            background-color: rgba(255, 215, 0, 0.2);
+            color: #b8860b;
+            border: 2px solid var(--gold-color);
+        }
+
+        .level-tab.active {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: 2px solid var(--primary-color);
+        }
+
+        .benefit-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .benefit-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .benefit-image {
+            height: 120px;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 40px;
+        }
+
+        .benefit-content {
+            padding: 15px;
+        }
+
+        .benefit-content h3 {
+            font-size: 16px;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .benefit-content p {
+            font-size: 13px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .benefit-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .discount-badge {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .benefit-button {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .coupon-section {
+            margin-top: 30px;
+        }
+
+        .coupon-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coupon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            width: 20px;
+            height: 100%;
+            background-image: radial-gradient(circle at 10px 10px, var(--section-bg) 10px, transparent 0);
+            background-size: 20px 20px;
+            background-repeat: repeat-y;
+        }
+
+        .coupon-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 20px;
+            height: 100%;
+            background-image: radial-gradient(circle at 10px 10px, var(--section-bg) 10px, transparent 0);
+            background-size: 20px 20px;
+            background-repeat: repeat-y;
+        }
+
+        .coupon-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .coupon-logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .coupon-expiry {
+            font-size: 12px;
+            color: var(--text-color);
+        }
+
+        .coupon-content h3 {
+            font-size: 16px;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .coupon-content p {
+            font-size: 13px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .coupon-code {
+            background-color: var(--light-color);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .coupon-footer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .coupon-button {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 10px;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+
+        .mockup-description {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .mockup-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-description p {
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .phone-mockup {
+                max-width: 320px;
+                height: 640px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="phone-screen">
+                <div class="status-bar">
+                    <div class="time">09:50</div>
+                    <div class="icons">
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                
+                <div class="app-header">
+                    <h1>Benefícios</h1>
+                    <p>Recompensas pelo uso consciente da água</p>
+                </div>
+                
+                <div class="app-content">
+                    <div class="level-tabs">
+                        <div class="level-tab bronze active">Bronze</div>
+                        <div class="level-tab silver">Prata</div>
+                        <div class="level-tab gold">Ouro</div>
+                    </div>
+                    
+                    <div class="section-title">
+                        <span>Benefícios disponíveis</span>
+                        <a href="#">Filtrar</a>
+                    </div>
+                    
+                    <div class="benefit-cards">
+                        <div class="benefit-card">
+                            <div class="benefit-image">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Loja Eco Construção</h3>
+                                <p>Desconto em produtos para economia de água na sua casa</p>
+                                <div class="benefit-footer">
+                                    <div class="discount-badge">5% OFF</div>
+                                    <button class="benefit-button">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-image">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Curso Online: Economia de Água</h3>
+                                <p>Acesso gratuito ao curso básico sobre uso consciente da água</p>
+                                <div class="benefit-footer">
+                                    <div class="discount-badge">Grátis</div>
+                                    <button class="benefit-button">Acessar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-image">
+                                <i class="fas fa-shopping-basket"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Supermercado Verde</h3>
+                                <p>Desconto em produtos sustentáveis e orgânicos</p>
+                                <div class="benefit-footer">
+                                    <div class="discount-badge">5% OFF</div>
+                                    <button class="benefit-button">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 75px;" class="coupon-section">
+                        <div class="section-title">
+                            <span>Meus cupons</span>
+                            <a href="#">Ver todos</a>
+                        </div>
+                        
+                        <div class="coupon-card">
+                            <div class="coupon-header">
+                                <div class="coupon-logo">
+                                    <i class="fas fa-faucet"></i>
+                                </div>
+                                <div class="coupon-expiry">
+                                    Válido até 30/06/2025
+                                </div>
+                            </div>
+                            <div class="coupon-content">
+                                <h3>Desconto em Torneiras Econômicas</h3>
+                                <p>5% de desconto na compra de torneiras com sensor ou aeradores</p>
+                                <div class="coupon-code">
+                                    AGUA5OFF
+                                </div>
+                                <div class="coupon-footer">
+                                    <button class="coupon-button">
+                                        <i class="fas fa-share-alt"></i> Compartilhar
+                                    </button>
+                                    <button class="coupon-button">
+                                        <i class="fas fa-qrcode"></i> QR Code
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+
+    <div class="bottom-nav">
+                    <a style="text-decoration: none;" href="dashboard.html">
+                        <div class="nav-item">
+                            <i class="fas fa-home"></i>
+                            <span>Início</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="registro_acoes.html">
+                        <div class="nav-item active">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Registrar</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="beneficios.html">
+                        <div class="nav-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Benefícios</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="perfil.html">
+                        <div class="nav-item">
+                            <i class="fas fa-user"></i>
+                            <span>Perfil</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaClub App - Dashboard Mockup</title>
+    <style>
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #90e0ef;
+            --light-color: #caf0f8;
+            --dark-color: #03045e;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --card-bg: #ffffff;
+            --section-bg: #f8f9fa;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --bronze-color: #cd7f32;
+            --silver-color: #c0c0c0;
+            --gold-color: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--section-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .mockup-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .mockup-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .mockup-title h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-title p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 360px;
+            height: 720px;
+            background-color: var(--card-bg);
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background-color: var(--card-bg);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: var(--section-bg);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--dark-color);
+            font-size: 12px;
+            z-index: 5;
+        }
+
+        .status-bar .time {
+            font-weight: 600;
+        }
+
+        .status-bar .icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .app-header {
+            background-color: var(--primary-color);
+            padding: 60px 20px 30px;
+            color: var(--light-text);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-color);
+            border: 3px solid var(--light-text);
+        }
+
+        .user-details h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .user-details p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .points-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .points-info h3 {
+            font-size: 14px;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .points-info .points {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .level-badge {
+            background-color: var(--bronze-color);
+            color: var(--light-text);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .app-content {
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100% - 180px);
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .progress-section {
+            margin-bottom: 25px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: var(--light-color);
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 65%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card h4 {
+            font-size: 12px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-card .value i {
+            font-size: 16px;
+        }
+
+        .recent-actions {
+            margin-bottom: 25px;
+        }
+
+        .action-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .action-details {
+            flex: 1;
+        }
+
+        .action-details h4 {
+            font-size: 14px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .action-details p {
+            font-size: 12px;
+            color: var(--text-color);
+        }
+
+        .action-points {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .quick-actions {
+            margin-bottom: 25px;
+        }
+
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .quick-action {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .quick-action i {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .quick-action p {
+            font-size: 12px;
+            color: var(--text-color);
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 10px;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+
+        .mockup-description {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .mockup-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-description p {
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .phone-mockup {
+                max-width: 320px;
+                height: 640px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div class="phone-screen">
+                <div class="status-bar">
+                    <div class="time">09:41</div>
+                    <div class="icons">
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                
+                <div class="app-header">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-details">
+                            <h2>Olá, Maria!</h2>
+                            <p>Cidadã Urbana</p>
+                        </div>
+                    </div>
+                    
+                    <div class="points-card">
+                        <div class="points-info">
+                            <h3>Seus pontos</h3>
+                            <div class="points">1.250</div>
+                        </div>
+                        <div class="level-badge">
+                            Bronze
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="app-content">
+                    <div class="progress-section">
+                        <div class="section-title">
+                            <span>Progresso para Prata</span>
+                            <a href="#">Detalhes</a>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span>1.250 pontos</span>
+                            <span>750 pontos restantes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h4>Economia de água</h4>
+                            <div class="value">
+                                <span>15%</span>
+                                <i class="fas fa-arrow-up" style="color: #4CAF50;"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Consumo mensal</h4>
+                            <div class="value">
+                                <span>8,5 m³</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Cupons disponíveis</h4>
+                            <div class="value">
+                                <span>3</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Ações este mês</h4>
+                            <div class="value">
+                                <span>5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-actions">
+                        <div class="section-title">
+                            <span>Ações recentes</span>
+                            <a href="#">Ver todas</a>
+                        </div>
+                        
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-file-invoice"></i>
+                            </div>
+                            <div class="action-details">
+                                <h4>Registro de conta de água</h4>
+                                <p>Hoje, 09:15</p>
+                            </div>
+                            <div class="action-points">
+                                +100
+                            </div>
+                        </div>
+                        
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-faucet"></i>
+                            </div>
+                            <div class="action-details">
+                                <h4>Instalação de torneira econômica</h4>
+                                <p>Ontem, 14:30</p>
+                            </div>
+                            <div class="action-points">
+                                +250
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <div class="section-title">
+                            <span>Ações rápidas</span>
+                        </div>
+                        
+                        <div class="quick-actions-grid">
+                            <a style="text-decoration: none;" href="registro_acoes.html">
+                                <div class="quick-action">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Registrar</p>
+                                </div>
+                            </a>
+                            <a style="text-decoration: none;" href="beneficios.html">
+                                <div class="quick-action">
+                                    <i class="fas fa-gift"></i>
+                                    <p>Benefícios</p>
+                                </div>
+                            </a>
+                            <a style="text-decoration: none;" href="simulador.html">
+                                <div class="quick-action">
+                                    <i class="fas fa-calculator"></i>
+                                    <p>Simulador</p>
+                                </div>
+                            </a>
+                            <a style="text-decoration: none;" href="parceiros.html">
+                                <div class="quick-action">
+                                    <i class="fas fa-store"></i>
+                                    <p>Parceiros</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+</body>
+</html>

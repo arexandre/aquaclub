@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaClub App - Login Mockup</title>
+    <style>
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #90e0ef;
+            --light-color: #caf0f8;
+            --dark-color: #03045e;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --card-bg: #ffffff;
+            --section-bg: #f8f9fa;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--section-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .mockup-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .mockup-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .mockup-title h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-title p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 360px;
+            height: 720px;
+            background-color: var(--card-bg);
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background-color: var(--card-bg);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--light-color), var(--section-bg));
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .app-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px 20px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        .logo i {
+            font-size: 60px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            color: var(--primary-color);
+        }
+
+        .logo p {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-top: 5px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: var(--card-bg);
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-button {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: var(--transition);
+            margin: auto;
+        }
+
+        .login-button:hover {
+            background-color: var(--dark-color);
+        }
+
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .social-login p::before,
+        .social-login p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .social-login p::before {
+            left: 0;
+        }
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .social-icon i {
+            font-size: 24px;
+        }
+
+        .social-icon.facebook i {
+            color: #1877F2;
+        }
+
+        .social-icon.google i {
+            color: #DB4437;
+        }
+
+        .social-icon.apple i {
+            color: #000000;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: auto;
+            padding: 20px 0;
+        }
+
+        .signup-link p {
+            color: var(--text-color);
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--dark-color);
+            font-size: 12px;
+        }
+
+        .status-bar .time {
+            font-weight: 600;
+        }
+
+        .status-bar .icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .mockup-description {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .mockup-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-description p {
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #semstyle {
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .phone-mockup {
+                max-width: 320px;
+                height: 640px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="phone-screen">
+                <div class="status-bar">
+                    <div class="time">09:41</div>
+                    <div class="icons">
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                
+                <div class="app-content">
+                    <div class="logo">
+                        <i class="fas fa-water"></i>
+                        <h1>AquaClub</h1>
+                        <p>Economize água, ganhe recompensas</p>
+                    </div>
+                    
+                    <div class="login-form">
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="E-mail">
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Senha">
+                        </div>
+                        <div class="forgot-password">
+                            <a href="#">Esqueceu a senha?</a>
+                        </div>
+                        <a href="dashboard.html" id="semstyle"><button class="login-button">Entrar</button></a>
+                    </div>
+                    
+                    <div class="social-login">
+                        <p>Ou entre com</p>
+                        <div class="social-icons">
+                            <div class="social-icon facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="social-icon google">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="social-icon apple">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="signup-link">
+                        <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>

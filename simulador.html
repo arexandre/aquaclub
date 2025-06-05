@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaClub App - Simulador Mockup</title>
+    <style>
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #90e0ef;
+            --light-color: #caf0f8;
+            --dark-color: #03045e;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --card-bg: #ffffff;
+            --section-bg: #f8f9fa;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--section-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .mockup-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .mockup-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .mockup-title h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-title p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 360px;
+            height: 720px;
+            background-color: var(--card-bg);
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background-color: var(--card-bg);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: var(--section-bg);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--dark-color);
+            font-size: 12px;
+            z-index: 5;
+        }
+
+        .status-bar .time {
+            font-weight: 600;
+        }
+
+        .status-bar .icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .app-header {
+            background-color: var(--primary-color);
+            padding: 60px 20px 20px;
+            color: var(--light-text);
+            text-align: center;
+        }
+
+        .app-header h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .app-header p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .app-content {
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100% - 120px - 60px); /* Header height + bottom nav height */
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .input-form {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--dark-color);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .result-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .result-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .result-title h3 {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .result-title p {
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .result-chart {
+            background-color: var(--light-color);
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .tips-section {
+            margin-top: 20px;
+        }
+
+        .tip-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .tip-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .tip-content {
+            flex: 1;
+        }
+
+        .tip-content h4 {
+            font-size: 16px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .tip-content p {
+            font-size: 13px;
+            color: var(--text-color);
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 10px;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+
+        .mockup-description {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .mockup-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .mockup-description p {
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .phone-mockup {
+                max-width: 320px;
+                height: 640px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="phone-screen">
+                <div class="status-bar">
+                    <div class="time">09:55</div>
+                    <div class="icons">
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                
+                <div class="app-header">
+                    <h1>Simulador de Consumo</h1>
+                    <p>Calcule seu consumo e receba dicas personalizadas</p>
+                </div>
+                
+                <div class="app-content">
+                    <div class="input-form">
+                        <div class="section-title">Informe seus dados</div>
+                        
+                        <div class="form-group">
+                            <label for="consumption">Consumo mensal (m³)</label>
+                            <input type="number" id="consumption" placeholder="Ex: 10" value="8.5">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bill">Valor da fatura (R$)</label>
+                            <input type="number" id="bill" placeholder="Ex: 80.00" value="95.30">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="people">Número de pessoas na residência</label>
+                            <select id="people">
+                                <option value="1">1 pessoa</option>
+                                <option value="2">2 pessoas</option>
+                                <option value="3" selected>3 pessoas</option>
+                                <option value="4">4 pessoas</option>
+                                <option value="5">5 ou mais pessoas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profile">Perfil de consumo</label>
+                            <select id="profile">
+                                <option value="basic">Básico (banho, cozinha, limpeza)</option>
+                                <option value="medium" selected>Médio (básico + jardim pequeno)</option>
+                                <option value="high">Alto (básico + jardim grande/piscina)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="submit-button">Calcular</button>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-header">
+                            <div class="result-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="result-title">
+                                <h3>Resultado da análise</h3>
+                                <p>Baseado nos dados informados</p>
+                            </div>
+                        </div>
+                        
+                        <div class="result-stats">
+                            <div class="stat-item">
+                                <h4>Consumo por pessoa</h4>
+                                <p>2,8 m³</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>Média da região</h4>
+                                <p>3,5 m³</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>Economia potencial</h4>
+                                <p>15%</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>Economia em R$</h4>
+                                <p>R$ 14,30</p>
+                            </div>
+                        </div>
+                        
+                        <div class="result-chart">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="tips-section">
+                        <div class="section-title">Dicas personalizadas</div>
+                        
+                        <div class="tip-card">
+                            <div class="tip-icon">
+                                <i class="fas fa-shower"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Reduza o tempo de banho</h4>
+                                <p>Diminuir o banho em 2 minutos pode economizar até 20 litros de água por dia.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <div class="tip-icon">
+                                <i class="fas fa-faucet"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Instale torneiras econômicas</h4>
+                                <p>Torneiras com aeradores podem reduzir o consumo em até 50%.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <div class="tip-icon">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Otimize o uso da máquina de lavar</h4>
+                                <p>Utilize a máquina de lavar apenas com carga completa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bottom-nav">
+                    <a style="text-decoration: none;" href="dashboard.html">
+                        <div class="nav-item">
+                            <i class="fas fa-home"></i>
+                            <span>Início</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="registro_acoes.html">
+                        <div class="nav-item active">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Registrar</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="beneficios.html">
+                        <div class="nav-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Benefícios</span>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" href="perfil.html">
+                        <div class="nav-item">
+                            <i class="fas fa-user"></i>
+                            <span>Perfil</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
